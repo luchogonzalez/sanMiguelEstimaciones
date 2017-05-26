@@ -1,0 +1,30 @@
+<core:FragmentDefinition height="100%" width="100%" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Panel>
+		<content>
+			<f:SimpleForm id="iconTabFilter1form" minWidth="1024" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1">
+				<f:content>
+					<Label id="label0" text="BjasXPtaMes"></Label>
+					<Input id="input0" value="{BjasXPtaMes}"></Input>
+					<Label id="label1" text="BjasXPtaTemp"></Label>
+					<Input id="input1" value="{BjasXPtaTemp}"></Input>
+					<Label id="label2" text="CalidadPrct"></Label>
+					<Input id="input2" value="{CalidadPrct}"></Input>
+					<Label id="label4" text="Fecha"></Label>
+					<Input id="input4" value="{Fecha}"></Input>
+					<Label id="label5" text="Finca"></Label>
+					<Input id="input5" value="{Finca}"></Input>
+					<Label id="label6" text="LimonesXBdja"></Label>
+					<Input id="input6" value="{LimonesXBdja}"></Input>
+					<Label id="label7" text="Lote"></Label>
+					<Input id="input7" value="{Lote}"></Input>
+					<Label id="label8" text="Observaciones"></Label>
+					<Input id="input8" value="{Observaciones}"></Input>
+					<Label id="label9" text="Tamaño"></Label>
+					<Input id="input9" value="{Tamaño}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

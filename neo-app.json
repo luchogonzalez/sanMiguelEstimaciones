@@ -1,0 +1,31 @@
+{
+  "welcomeFile": "index.html",
+  "routes": [
+    {
+      "path": "/HCP4SanMiguel",
+      "target": {
+        "type": "destination",
+        "name": "HCP4SanMiguel"
+      },
+      "description": "OData for San Miguel App"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    }
+  ]
+}

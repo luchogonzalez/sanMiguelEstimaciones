@@ -1,0 +1,8 @@
+{
+	"logon": true,
+	"host": "hcpms-p1942475686trial.hanatrial.ondemand.com",
+	"port": "443",
+	"https": "true",
+	"appID": "com.ataway.app.estimaciones",
+	"network": true
+}
