@@ -1,55 +1,53 @@
-<edmx:Edmx
-    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
-    <edmx:DataServices
-        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
-        <Schema
-            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="sanmiguel">
-            <EntityType Name="Estimacion">
-                <Key>
-                    <PropertyRef Name="EstimId"/>
-                </Key>
-                <Property Name="BjasXPtaMes" Type="Edm.Single" Nullable="true"/>
-                <Property Name="BjasXPtaTemp" Type="Edm.Single" Nullable="true"/>
-                <Property Name="CalidadPrct" Type="Edm.Single" Nullable="true"/>
-                <Property Name="EstimId" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="Fecha" Type="Edm.DateTime"/>
-                <Property Name="Finca" Type="Edm.String" Nullable="true" MaxLength="25"/>
-                <Property Name="LimonesXBdja" Type="Edm.Single" Nullable="true"/>
-                <Property Name="Lote" Type="Edm.String" Nullable="true" MaxLength="25"/>
-                <Property Name="Observaciones" Type="Edm.String" Nullable="true" MaxLength="140"/>
-                <Property Name="Tamaño" Type="Edm.String" Nullable="true" MaxLength="10"/>
-                <Property Name="Usuario" Type="Edm.String" Nullable="true" MaxLength="25"/>
-                <NavigationProperty Name="UsuarioDetails" Relationship="sanmiguel.Estimacion_Usuario" FromRole="Estimacion" ToRole="Usuario"/>
-            </EntityType>
-            <EntityType Name="Usuario">
-                <Key>
-                    <PropertyRef Name="UsuarioId"/>
-                </Key>
-                <Property Name="Nombre" Type="Edm.String" Nullable="true" MaxLength="25"/>
-                <Property Name="Pais" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="UsuarioId" Type="Edm.Int32" Nullable="false"/>
-                <NavigationProperty Name="EstimacionDetails" Relationship="sanmiguel.Estimacion_Usuario" FromRole="Usuario" ToRole="Estimacion"/>
-            </EntityType>
-            <Association Name="Estimacion_Usuario">
-                <End Type="sanmiguel.Estimacion" Multiplicity="*" Role="Estimacion"/>
-                <End Type="sanmiguel.Usuario" Multiplicity="1" Role="Usuario"/>
-                <ReferentialConstraint>
-                    <Principal Role="Usuario">
-                        <PropertyRef Name="Nombre"/>
-                    </Principal>
-                    <Dependent Role="Estimacion">
-                        <PropertyRef Name="Usuario"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <EntityContainer Name="sanmiguelContainer" m:IsDefaultEntityContainer="true">
-                <EntitySet Name="Estimacions" EntityType="sanmiguel.Estimacion"/>
-                <EntitySet Name="Usuarios" EntityType="sanmiguel.Usuario"/>
-                <AssociationSet Name="Estimacion_UsuarioSet" Association="sanmiguel.Estimacion_Usuario">
-                    <End EntitySet="Estimacions" Role="Estimacion"/>
-                    <End EntitySet="Usuarios" Role="Usuario"/>
-                </AssociationSet>
-            </EntityContainer>
-        </Schema>
-    </edmx:DataServices>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="sanmiguel">
+			<EntityType Name="Estimacion">
+				<Key>
+					<PropertyRef Name="EstimId"/>
+				</Key>
+				<Property Name="BjasXPtaMes" Type="Edm.Single" Nullable="true"/>
+				<Property Name="BjasXPtaTemp" Type="Edm.Single" Nullable="true"/>
+				<Property Name="CalidadPrct" Type="Edm.Single" Nullable="true"/>
+				<Property Name="EstimId" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="Fecha" Type="Edm.String" Nullable="true" MaxLength="10"/>
+				<Property Name="Finca" Type="Edm.String" Nullable="true" MaxLength="25"/>
+				<Property Name="LimonesXBdja" Type="Edm.Single" Nullable="true"/>
+				<Property Name="Lote" Type="Edm.String" Nullable="true" MaxLength="25"/>
+				<Property Name="Observaciones" Type="Edm.String" Nullable="true" MaxLength="140"/>
+				<Property Name="Tamaño" Type="Edm.String" Nullable="true" MaxLength="10"/>
+				<Property Name="Usuario" Type="Edm.Int32" Nullable="true"/>
+				<NavigationProperty Name="UsuarioDetails" Relationship="sanmiguel.Estimacion_Usuario_Many_ZeroToOne0" FromRole="Estimacion" ToRole="Usuario"/>
+			</EntityType>
+			<EntityType Name="Usuario">
+				<Key>
+					<PropertyRef Name="UsuarioId"/>
+				</Key>
+				<Property Name="Nombre" Type="Edm.String" Nullable="true" MaxLength="25"/>
+				<Property Name="Pais" Type="Edm.String" Nullable="false" MaxLength="30"/>
+				<Property Name="UsuarioId" Type="Edm.Int32" Nullable="false"/>
+				<NavigationProperty Name="EstimacionDetails" Relationship="sanmiguel.Estimacion_Usuario_Many_ZeroToOne0" FromRole="Usuario"
+					ToRole="Estimacion"/>
+			</EntityType>
+			<Association Name="Estimacion_Usuario_Many_ZeroToOne0">
+				<End Type="sanmiguel.Estimacion" Multiplicity="*" Role="Estimacion"/>
+				<End Type="sanmiguel.Usuario" Multiplicity="0..1" Role="Usuario"/>
+				<ReferentialConstraint>
+					<Principal Role="Usuario">
+						<PropertyRef Name="UsuarioId"/>
+					</Principal>
+					<Dependent Role="Estimacion">
+						<PropertyRef Name="Usuario"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="sanmiguelContainer" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="Estimacions" EntityType="sanmiguel.Estimacion"/>
+				<EntitySet Name="Usuarios" EntityType="sanmiguel.Usuario"/>
+				<AssociationSet Name="Estimacion_Usuario_Many_ZeroToOne0Set" Association="sanmiguel.Estimacion_Usuario_Many_ZeroToOne0">
+					<End EntitySet="Estimacions" Role="Estimacion"/>
+					<End EntitySet="Usuarios" Role="Usuario"/>
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
 </edmx:Edmx>
