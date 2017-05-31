@@ -28,6 +28,7 @@
 					<Button icon="sap-icon://refresh" press="refreshData"></Button>
 					<ToolbarSpacer/>
 					<!--<Button icon="sap-icon://add" press="addItem"></Button>-->
+					<Button icon="sap-icon://log" press="onLogOut"></Button>
 				</content>
 			</Toolbar>
 		</footer>
