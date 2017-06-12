@@ -13,7 +13,13 @@
 			</Bar>
 		</subHeader>
 		<content>
-			<List id="list" items="{/Estimacions}" mode="{device>/listMode}" noDataText="{i18n>masterListNoDataText}" select="onSelect" growing="true"
+			<List id="list" 
+			      items="{
+			              path: '/Estimacions',
+			                 sorter : {
+                                  path : 'Lote', descending : false
+                                     }
+			            }" mode="{device>/listMode}" noDataText="{i18n>masterListNoDataText}" select="onSelect" growing="true"
 				growingScrollToLoad="true">
 				<items>
 					<ObjectListItem type="{device>/listItemType}" press="onSelect" title="{Finca}" number="Lote {Lote}" numberUnit="{Fecha}"></ObjectListItem>

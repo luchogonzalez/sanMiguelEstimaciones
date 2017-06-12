@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/Device",
 	"com/ataway/app/util/Controller",
+	"sap/m/MessageBox",
 	"com/ataway/app/dev/devapp"
-], function(Device, Controller, devapp) {
+], function(Device, Controller, MessageBox, devapp) {
 	"use strict";
 
 	return Controller.extend("com.ataway.app.controller.Master", {
@@ -11,6 +12,9 @@ sap.ui.define([
 		 * It sets up the event handling for the master/detail communication and other lifecycle tasks.
 		 */
 		onInit: function() {
+		    //var username = devapp.devlogon.appContext.registrationContext.user; test in mobile///
+		    this._oView = this.getView();
+		    
 			this.oInitialLoadFinishedDeferred = jQuery.Deferred();
 			var oEventBus = this.getEventBus();
 
@@ -20,6 +24,22 @@ sap.ui.define([
 					oListItem: this.getView().byId("list").getItems()[0]
 				});
 			}, this);
+			
+					
+            // se crea y aplica el filtro de estimaciones por usuario
+            this._oView.attachAfterRendering(function() {
+                //se crea el filtro por usuario
+                var sPath1 = "Usuario";
+                var sOperator1 = "EQ";
+                var sValue1 = "2"; //!!!Id de usuario hardcodeado para probar en webapp!!
+                var oFilter1 = new sap.ui.model.Filter(sPath1, sOperator1, sValue1);
+                
+                // get the list items binding
+                var oBinding = this.byId("list").getBinding("items");
+                
+                //Apply filter(s)
+                oBinding.filter(oFilter1);
+            });
 
 			oEventBus.subscribe("Detail", "TabChanged", this.onDetailTabChanged, this);
 
@@ -205,7 +225,7 @@ sap.ui.define([
 		/**
 		 * AddItem button handler
 		 */
-		addItem: function() {
+		/*addItem: function() {
 
 			var model = this.getView().getModel();
 			if (model.hasPendingChanges() || model.newEntryContext) {
@@ -214,12 +234,12 @@ sap.ui.define([
 			} else {
 				this.executeAddItem();
 			}
-		},
+		}, */
 
 		/**
 		 * add a new record to offline store
 		 */
-		executeAddItem: function() {
+		/*executeAddItem: function() {
 			//var oEventBus = this.getEventBus();
 			//oEventBus.publish("Master", "AddItem");
 			var oList = this.getView().byId("list");
@@ -231,7 +251,7 @@ sap.ui.define([
 				entity: bindingPath.substr(1),
 				tab: "AddItem"
 			}, bReplace);
-		},
+		}, */
 
 		/**
 		 * open cancelConfirmDialog
@@ -287,26 +307,42 @@ sap.ui.define([
 					if (devapp.isLoaded) {
 						if (devapp.isOnline) {
 							var oEventBus = this.getEventBus();
-							oEventBus.publish("OfflineStore", "Refreshing");
+							sap.Logger.info("Refreshing data...");
+							oEventBus.publish("OfflineStore", "Refreshing").done(function(){
+							    sap.m.MessageToast.show("Datos actualizados");
+							});
+							
 						} else {
+						    sap.Logger.info("Refreshing data...");
 							model.refresh();
+							sap.m.MessageToast.show("Datos actualizados");
 						}
 					} else {
+					    sap.Logger.info("Refreshing data...");
 						model.refresh();
+						sap.m.MessageToast.show("Datos actualizados");
 					}
 				}, this);
 			} else {
 				if (devapp.isLoaded) {
 					if (devapp.isOnline) {
 						var oEventBus = this.getEventBus();
-						oEventBus.publish("OfflineStore", "Refreshing");
+						sap.Logger.info("Refreshing data...");
+						oEventBus.publish("OfflineStore", "Refreshing").done(function(){
+						    sap.m.MessageToast.show("Datos actualizados online");
+						});
 					} else {
+					    sap.Logger.info("Refreshing data...");
 						model.refresh();
+						sap.m.MessageToast.show("Datos actualizados offline");
 					}
 				} else {
+				    sap.Logger.info("Refreshing data..");
 					model.refresh();
+					sap.m.MessageToast.show("Datos actualizados !isnotLoaded");
 				}
 			}
+			sap.Logger.upload();
 		},
 
 		onErrorBTVisible: function(errCount) {
@@ -321,6 +357,12 @@ sap.ui.define([
 		onErrorPress: function() {
 			var oEventBus = this.getEventBus();
 			oEventBus.publish("OfflineStore", "OpenErrDialog");
+		},
+		
+		onLogOut: function() {
+		    sap.Logger.info("Entered logOut on master controller...");
+		    devapp.logOut();
 		}
+
 	});
 });
