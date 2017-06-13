@@ -41,10 +41,10 @@
         "ios61Ipad": ""
       },
       "android": {
-        "ldpi": "",
-        "mdpi": "",
-        "hdpi": "",
-        "xhdpi": ""
+        "ldpi": "res/android/icon2ldpi.png",
+        "mdpi": "res/android/icon2mdpi.png",
+        "hdpi": "res/android/icon2hdpi.png",
+        "xhdpi": "res/android/icon2xxhdpi.png"
       },
       "windows": {
         "s44": "",
@@ -81,13 +81,13 @@
       },
       "android": {
         "landhdpi": "",
-        "porthdpi": "",
+        "porthdpi": "res/android/spl1hdpi.png",
         "landldpi": "",
-        "portldpi": "",
+        "portldpi": "res/android/sp1ldpi.png",
         "landmdpi": "",
-        "portmdpi": "",
+        "portmdpi": "res/android/spl1mdpi.png",
         "landxhdpi": "",
-        "portxhdpi": ""
+        "portxhdpi": "res/android/spl1xhdpi.png"
       },
       "windows": {
         "s100": "",
@@ -152,7 +152,7 @@
           "Fullscreen": true,
           "Orientation": "default",
           "ShowTitle": false,
-          "LogLevel": "INFO",
+          "LogLevel": "DEBUG",
           "LoadUrlTimeout": "80000",
           "UrlScheme": ""
         }
@@ -251,7 +251,7 @@
           "localBuild": true
         },
         "splashscreen": {
-          "selected": false,
+          "selected": true,
           "registry": "cordova-plugin-splashscreen",
           "localBuild": true
         },
@@ -283,7 +283,7 @@
           "localBuild": true
         },
         "logger": {
-          "selected": false,
+          "selected": true,
           "registry": "kapsel-plugin-logger",
           "localBuild": true
         },
