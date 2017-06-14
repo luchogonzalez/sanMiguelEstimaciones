@@ -12,7 +12,7 @@ sap.ui.define([
 		 * It sets up the event handling for the master/detail communication and other lifecycle tasks.
 		 */
 		onInit: function() {
-		    //var username = devapp.devlogon.appContext.registrationContext.user; test in mobile///
+		  //  var username = devapp.user; // mobile///
 		    this._oView = this.getView();
 		    
 			this.oInitialLoadFinishedDeferred = jQuery.Deferred();
@@ -31,7 +31,7 @@ sap.ui.define([
                 //se crea el filtro por usuario
                 var sPath1 = "Usuario";
                 var sOperator1 = "EQ";
-                var sValue1 = "2"; //!!!Id de usuario hardcodeado para probar en webapp!!
+                var sValue1 = "4";//username; //!!!Id de usuario hardcodeado para probar en webapp!!
                 var oFilter1 = new sap.ui.model.Filter(sPath1, sOperator1, sValue1);
                 
                 // get the list items binding

@@ -15,7 +15,8 @@ sap.ui.define([
 		 * In this case, it will check first of the application has already
 		 * registered with the SMP server. If not, it will register the app
 		 * then proceed to manage the logon process.
-		 * @param{Object} context SAP Cloud Platform Mobile Services logon input context
+		 * @param{Object} context SAP Cloud Platform Mobile
+		 * Services logon input context
 		 * @param{String} appId SAP Cloud Platform Mobile Services application ID
 		 ********************************************************************/
 		doLogonInit: function(context, appId) {
@@ -23,17 +24,22 @@ sap.ui.define([
 			this.appOfflineStore.appID = appId;
 			this.appOfflineStore.interval = 300000; //5 minutes
 
+
 			//Make call to Logon's Init method to get things registered and all setup
 			if (this.devapp.definedStore && this.devapp.offline) {
 				this.openStore = true;
 			}
 			var that = this;
 			sap.Logon.init(
-				function(context) {
+				function(resContext) {
 					//Make sure Logon returned a context for us to work with
-					if (context) {
-						//Store the context away to be used later if necessary
-						that.appContext = context;
+					if (resContext) {
+					    
+					    //Store the context away to be used later if necessary
+                        that.appContext = resContext;
+                        //guardo el username
+                        that.devapp.user = resContext.registrationContext.user;
+
 						if (that.openStore) {
 							//open offline store
 							that.openAppOfflineStore();
@@ -52,29 +58,37 @@ sap.ui.define([
 						MessageBox.alert("logon failed.");
 					}
 				}, appId, context);
-		},
+			},
 
 		/********************************************************************
 		 * Delete the application's registration information
 		 * Disconnects the app from the SMP server
 		 ********************************************************************/
 		doDeleteRegistration: function() {
+		    sap.Logger.info("Entering doDeleteRegistration on devlogon...");
+		    sap.m.MessageToast.show("doDeleteRegsitration");
 			var that = this;
 			if (this.appContext) {
 				//Call logon's deleteRegistration method
-				sap.Logon.core.deleteRegistration(
-					function(res) {
+				sap.logon.Core.deleteRegistration(
+					function() {
+					    sap.logon.Core.loadStartPage();
+					    //reset the app to its original packaged version
 						that.appContext = null;
-						//reset the app to its original packaged version
 						//(remove all updates retrieved by the AppUpdate plugin)
-						sap.AppUpdate.reset();
+						//sap.AppUpdate.reset();
+						sap.Logger.info("Unregistered Successfully!!!!");
+						sap.m.MessageToast.show("unregistered successfully?");
 					},
 					function(errObj) {
 						if (errObj) {
-							MessageBox.alert(JSON.stringify(errObj));
+							sap.Logger.error(JSON.stringify(errObj));
+							sap.Logger.upload();
+							sap.m.MessageToast.show("error on deleteRegistration");
 						}
 					});
 			}
+			sap.Logger.upload();
 		},
 
 		/********************************************************************
@@ -392,5 +406,6 @@ sap.ui.define([
 				}
 			);
 		}
+		
 	};
 });

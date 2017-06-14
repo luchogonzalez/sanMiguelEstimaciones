@@ -13,6 +13,7 @@ sap.ui.define([
 		definedStore: {},
 		errorArchive: [],
 		devLogon: devlogon,
+		user: "",
 
 		//Application Constructor
 		initialize: function() {
@@ -77,14 +78,16 @@ sap.ui.define([
 								"serverHost": that.smpInfo.server,
 								"https": data.https,
 								"serverPort": that.smpInfo.port,
+								"multiUser": true,
 								"custom": {
-								    "hiddenFields": ["farmId", "resourcePath", "securityConfig", "serverPort", "https"],
+								    "hiddenFields": ["farmId", "resourcePath", "securityConfig", "serverPort", "https","serverHost"],
 								    "disablePasscode": true
 								}
 							};
 							//save it
 							that.devLogon.devapp = that;
 							that.devLogon.doLogonInit(context, that.smpInfo.appID);
+							sap.Logger.setLogLevel(sap.Logger.DEBUG);
 						} else {
 							that.startApp();
 						}
@@ -144,6 +147,11 @@ sap.ui.define([
 					})
 				}).placeAt("content");
 			});
+		},
+		
+		logOut: function(){
+		    sap.Logger.debug("Entering logOut on devapp...");
+            this.devlogon.doDeleteRegistration();
 		}
 	};
 });

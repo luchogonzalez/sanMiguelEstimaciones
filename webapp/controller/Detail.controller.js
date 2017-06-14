@@ -357,7 +357,9 @@ sap.ui.define([
 				model.submitChanges(
 					jQuery.proxy(function(oData, oResponse) {
 						this.getView().setBusy(false);
-						this.openDialog("i18n>saveSuccess");
+						
+						sap.m.MessageToast.show("Datos guardados");
+						
 						//this.switchMode("read");
 						if (oResponse && oResponse.statusCode === 201) { // 201 == Created
 							if (oData && oData.__metadata && oData.__metadata.id) {
@@ -368,6 +370,7 @@ sap.ui.define([
 								}, true);
 							}
 						}
+						sap.Logger.info("Changes saved");
 					}, this),
 					jQuery.proxy(function(error) {
 						this.getView().setBusy(false);
@@ -377,6 +380,7 @@ sap.ui.define([
 							msg = error.response.body;
 						}
 						this._showServiceError(msg);
+						sap.Logger.error("Error saving edit changes: " && msg);
 					}, this)
 				);
 			}
