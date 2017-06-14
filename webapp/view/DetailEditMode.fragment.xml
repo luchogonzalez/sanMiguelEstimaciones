@@ -2,27 +2,39 @@
 	xmlns:f="sap.ui.layout.form">
 	<Panel>
 		<content>
-			<f:SimpleForm id="iconTabFilter1form" minWidth="1024" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
-				emptySpanL="4" emptySpanM="4" columnsL="1">
+			<f:SimpleForm id="iconTabFilter1form" minWidth="1024" editable="true" layout="ResponsiveGridLayout" 
+			labelSpanXL="12"
+			labelSpanL="12"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="3"
+			columnsL="3"
+			columnsM="3"
+			singleContainerFullSize="false">
 				<f:content>
 					<Label id="label0" text="Bdjas por Planta por Mes"></Label>
-					<Input id="input0" value="{BjasXPtaMes}"></Input>
+					<Input class="box" id="input0" value="{BjasXPtaMes}" type="Number"></Input>
 					<Label id="label1" text="Bdjas por Planta por Temporada"></Label>
-					<Input id="input1" value="{BjasXPtaTemp}"></Input>
+					<Input class="box" id="input1" value="{BjasXPtaTemp}" type="Number"></Input>
 					<Label id="label2" text="% de Calidad"></Label>
-					<Input id="input2" value="{CalidadPrct}"></Input>
+					<Input class="box" id="input2" value="{CalidadPrct}" type="Number"></Input>
 					<!--<Label id="label4" text="Fecha"></Label>
 					<Input id="input4" value="{Fecha}"></Input>
 					<Label id="label5" text="Finca"></Label>
 					<Input id="input5" value="{Finca}"></Input>-->
-					<Label id="label6" text="Limones por Bandeja"></Label>
-					<Input id="input6" value="{LimonesXBdja}"></Input>
+					<Label id="label6" text="Limones por Bandeja" ></Label>
+					<Input class="box" id="input6" value="{LimonesXBdja}" type="Number"></Input>
 					<!--<Label id="label7" text="Lote"></Label>
 					<Input id="input7" value="{Lote}"></Input>-->
 					<Label id="label8" text="Tamaño"></Label>
-					<Input id="input8" value="{Tamaño}"></Input>
+					<Input class="box" id="input8" value="{Tamaño}"></Input>
 					<Label id="label9" text="Observaciones"></Label>
-					<Input id="input9" value="{Observaciones}"></Input>
+					<Input id="input9" value="{Observaciones}" type="Text"></Input>
 				</f:content>
 			</f:SimpleForm>
 		</content>

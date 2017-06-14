@@ -1,3 +1,36 @@
 .spacerTop {
     margin-top: 2rem;
 }
+
+/*achicar inputs*/
+.sapMInputBaseInner{
+    /*width:30%;*/
+}
+
+/*seteo del footer a verde oscuro*/
+.sapMIBar-CTX.sapMFooter-CTX{
+   /*  background-color:#387529; old bg*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#498436+0,386429+100 */
+    background: #498436; /* Old browsers */
+    background: -moz-linear-gradient(top, #498436 0%, #386429 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #498436 0%,#386429 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #498436 0%,#386429 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#498436', endColorstr='#386429',GradientType=0 ); /* IE6-9 */
+}
+
+/*seteo color de fondo a blanco*/
+.sapMPanelBGTranslucent{
+    background-color:#FFF;
+}
+
+/*seteo color de fondo a gris claro*/
+#__xmlview1--detailPage-cont, #__xmlview0--page-cont{
+    background-color: rgb(252,252,245);
+    background-color: rgba(252,252,245,0.9);
+}
+
+/*color de la barra de arriba y el press de los items*/
+.sapMShellBrandingBar, .sapMLIB.sapMLIBActive, .sapMBar-CTX.sapMHeader-CTX:not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
+    background-color: #387529;
+}
+

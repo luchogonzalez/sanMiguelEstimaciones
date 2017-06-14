@@ -4,7 +4,7 @@
 			<core:Icon id="detailIcon" src="sap-icon://alert"
 				visible="{parts:[{path:'device>/isOffline'}, {path:'device>/isPhone'}], formatter:'.onlineIconVisible'}"></core:Icon>
 		</headerContent>
-		<content></content>
+		<content class="custom"></content>
 		<footer>
 			<Toolbar id="detailToolbar">
 				<content>
