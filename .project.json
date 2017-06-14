@@ -25,7 +25,7 @@
     "sap.watt.uitools.ide.fiori"
   ],
   "hybrid": {
-    "appname": "SanMiguel",
+    "appname": "Estimaciones",
     "appid": "com.ataway.app.estimaciones",
     "appdesc": "",
     "appversion": "1.1.0",
@@ -149,7 +149,7 @@
       "android": {
         "selected": true,
         "preferences": {
-          "Fullscreen": true,
+          "Fullscreen": false,
           "Orientation": "default",
           "ShowTitle": false,
           "LogLevel": "DEBUG",
