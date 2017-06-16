@@ -151,7 +151,7 @@ sap.ui.define([
 		
 		logOut: function(){
 		    sap.Logger.debug("Entering logOut on devapp...");
-            this.devlogon.doDeleteRegistration();
+            this.devLogon.doDeleteRegistration();
 		}
 	};
 });

@@ -65,20 +65,14 @@ sap.ui.define([
 		 * Disconnects the app from the SMP server
 		 ********************************************************************/
 		doDeleteRegistration: function() {
-		    sap.Logger.info("Entering doDeleteRegistration on devlogon...");
-		    sap.m.MessageToast.show("doDeleteRegsitration");
 			var that = this;
 			if (this.appContext) {
 				//Call logon's deleteRegistration method
 				sap.logon.Core.deleteRegistration(
 					function() {
-					    sap.logon.Core.loadStartPage();
-					    //reset the app to its original packaged version
+						//reset the app to its original packaged version
 						that.appContext = null;
-						//(remove all updates retrieved by the AppUpdate plugin)
-						//sap.AppUpdate.reset();
-						sap.Logger.info("Unregistered Successfully!!!!");
-						sap.m.MessageToast.show("unregistered successfully?");
+					    sap.logon.Core.loadStartPage();
 					},
 					function(errObj) {
 						if (errObj) {
