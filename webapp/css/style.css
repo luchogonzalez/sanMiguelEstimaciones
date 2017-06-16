@@ -30,7 +30,24 @@
 }
 
 /*color de la barra de arriba y el press de los items*/
-.sapMShellBrandingBar, .sapMLIB.sapMLIBActive, .sapMBar-CTX.sapMHeader-CTX:not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
-    background-color: #387529;
+.sapMShellBrandingBar, .sapMLIB.sapMLIBActive, 
+.sapMIBar-CTX.sapMFooter-CTX :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
+    background-color: rgba(252,252,245,0.9);
+    border:none;
+    color:#498436;
 }
 
+/*sin conexion leyenda*/
+.noconn{
+	font-size:0.9em !important;
+	color: #666666;
+    text-shadow: 0 1px rgba(255,255,255,0.5);
+}
+
+/*borde de los inputs*/
+.sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover,
+.sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):focus,
+:not(.sapMSFDisabled)>.sapMSFF:hover,
+:not(.sapMSFDisabled)>.sapMSFF:focus{
+	border-color:#498436;
+}

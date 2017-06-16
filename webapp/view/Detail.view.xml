@@ -1,18 +1,19 @@
 <mvc:View controllerName="com.ataway.app.controller.Detail" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m">
-	<Page id="detailPage" showNavButton="{device>/isPhone}" navButtonPress="onNavBack" class="sapUiFioriObjectPage" title="{i18n>detailTitle}">
+	<Page id="detailPage" class="sapUiFioriObjectPage" title="{i18n>detailTitle}">
 		<headerContent>
-			<core:Icon id="detailIcon" src="sap-icon://alert"
-				visible="{parts:[{path:'device>/isOffline'}, {path:'device>/isPhone'}], formatter:'.onlineIconVisible'}"></core:Icon>
+			<Text class="noconn" text="{i18n>noconn}" visible="{parts:[{path:'device>/isOffline'}, {path:'device>/isPhone'}], formatter:'.onlineIconVisible'}"/>
+			<!--<core:Icon id="detailIcon" src="sap-icon://alert"
+				visible="{parts:[{path:'device>/isOffline'}, {path:'device>/isPhone'}], formatter:'.onlineIconVisible'}"></core:Icon>-->
 		</headerContent>
 		<content class="custom"></content>
 		<footer>
 			<Toolbar id="detailToolbar">
 				<content>
-					<Button id="cancelButton" press="cancelEdit" icon="sap-icon://sys-cancel"></Button>
+					<Button id="cancelButton" text="{i18n>cancel}" press="cancelEdit" icon="sap-icon://sys-cancel"></Button>
 					<ToolbarSpacer id="toolbarSpacer"></ToolbarSpacer>
-					<Button id="saveButton" press="saveChanges" icon="sap-icon://save"></Button>
+					<Button id="saveButton" text="{i18n>save}" press="saveChanges" icon="sap-icon://save"></Button>
 					<!--<Button id="deleteButton" press="deleteItem" icon="sap-icon://delete"></Button>-->
-					<Button id="editButton" press="editItem" icon="sap-icon://edit"></Button>
+					<Button id="editButton" press="{i18n>edit}" icon="sap-icon://edit"></Button>
 				</content>
 			</Toolbar>
 		</footer>
